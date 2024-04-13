@@ -248,7 +248,7 @@ def build_dataset(args, device, train_size, val_size):
     val_transform = BaseTransform(val_size, pixel_mean, pixel_std)
 
 
-    data_root = os.path.join(args.root, 'traffic-sign_5k')
+    data_root = os.path.join(args.root, '/kaggle/input/traffic-sign-5k/traffic-sign_5k')
     num_classes = 45
     dataset = COCODataset(
         data_dir=data_root,
