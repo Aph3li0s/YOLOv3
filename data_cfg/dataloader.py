@@ -18,7 +18,7 @@ class COCODataset(Dataset):
         self.data_dir = data_dir
         self.json_file = json_file
         self.image_set = image_set
-        self.max_labels = 59
+        self.max_labels = 45
         self.img_size = img_size
         self.transform = transform
         self.coco_load, self.img_id, self.cat_id = self.load_data()
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     img_size = 640
     pixel_mean = (0.406, 0.456, 0.485)  # BGR
     pixel_std = (0.225, 0.224, 0.229)   # BGR
-    data_root = 'traffic-sign-data'
+    data_root = 'traffic-sign_5k'
     transform = Augmentation(img_size, pixel_mean, pixel_std)
     transform = BaseTransform(img_size, pixel_mean, pixel_std)
 

@@ -29,7 +29,7 @@ def load_weight(model, path_to_ckpt=None):
         print('no weight file ...')
         return model
         
-    checkpoint_state_dict = torch.load(path_to_ckpt, map_location='cpu')
+    checkpoint_state_dict = torch.load(path_to_ckpt, map_location='cuda')
     # model state dict
     model_state_dict = model.state_dict()
     # check

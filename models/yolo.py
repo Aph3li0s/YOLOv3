@@ -416,7 +416,7 @@ class YOLOv3(nn.Module):
             return conf_loss, cls_loss, bbox_loss, total_loss 
         
 def build_yolov3(args, cfg, device, input_size, num_classes=20, trainable=False):
-    anchor_size = cfg['anchor_size'][args.dataset]
+    anchor_size = cfg['anchor_size']['coco']
     
     model = YOLOv3(
         cfg=cfg,

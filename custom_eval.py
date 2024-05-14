@@ -11,7 +11,7 @@ from models.yolo import build_yolov3
 
 
 parser = argparse.ArgumentParser(description='YOLOv3 Detector Evaluation')
-parser.add_argument('-d', '--dataset', default='voc',
+parser.add_argument('-d', '--dataset', default='coco',
                     help='voc, coco-val, coco-test.')
 parser.add_argument('--root', default='',
                     help='data root')
@@ -37,8 +37,8 @@ parser.add_argument('--cuda', action='store_true', default=False,
 args = parser.parse_args()
 
 
-def coco_test(model, device, input_size, val_transform, test=False):
-    data_root = os.path.join(args.root, 'COCO')
+def coco_test(model, device, input_size, val_transform, test=True):
+    data_root = os.path.join(args.root, 'traffic-sign_5k')
     if test:
         # test-dev
         evaluator = COCOAPIEvaluator(
@@ -64,11 +64,7 @@ def coco_test(model, device, input_size, val_transform, test=False):
 
 
 if __name__ == '__main__':
-    # dataset
-    if args.dataset == 'voc':
-        print('eval on voc ...')
-        num_classes = 20
-    elif args.dataset == 'coco':
+    if args.dataset == 'coco':
         print('eval on coco-val ...')
         num_classes = 45
     else:

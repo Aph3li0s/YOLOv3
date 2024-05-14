@@ -90,7 +90,6 @@ def visualize(img,
 def test(args, model, device, testset, transform, class_colors=None, class_names=None, class_indexs=None):
     save_path = os.path.join('det_results/', args.dataset, args.version)
     os.makedirs(save_path, exist_ok=True)
-
     num_images = len(testset)
     for index in range(num_images):
         # key = cv2.waitKey(0) & 0xFF
@@ -126,8 +125,8 @@ def test(args, model, device, testset, transform, class_colors=None, class_names
         # cv2.waitKey(0)
 
         # 保存可视化结果
-        if args.save:
-            cv2.imwrite(os.path.join(save_path, str(index).zfill(6) +'.jpg'), img_processed)
+        # if args.save:
+        cv2.imwrite(os.path.join(save_path, str(index).zfill(6) +'.jpg'), img_processed)
 
 
 if __name__ == '__main__':
@@ -152,7 +151,7 @@ if __name__ == '__main__':
                     img_size=input_size)
         class_names = dataset.cls_names
         class_indexs = dataset.cat_id
-        num_classes = len(class_indexs)
+        num_classes = len(class_indexs) -1 
     np.random.seed(0)
     class_colors = [(np.random.randint(255),
                     np.random.randint(255),
